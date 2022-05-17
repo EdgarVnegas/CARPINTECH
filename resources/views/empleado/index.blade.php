@@ -1,4 +1,7 @@
-Mostrar lista de empleados
+Mostrar lista de empleados CARPINTECH
+
+<a href="{{ url('empleado/create') }}"> Registrar nuevo empleado </a>
+
 <table class="table table-dark">
     <thead class="thead-light">
         <tr>
