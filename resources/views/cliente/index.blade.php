@@ -16,7 +16,7 @@
 
 
 
-<a href="{{ url('empleado/create') }}" class="btn btn-success"> Registrar nuevo empleado</a>
+<a href="{{ url('cliente/create') }}" class="btn btn-success"> Registrar nuevo cliente</a>
 <br>
 <br>
 
@@ -29,34 +29,39 @@
             <th>Apellido Paterno</th>
             <th>Apellido Materno</th>
             <th>Correo</th>
+            <th>Direccion</th>
+            <th>Codigo Postal</th>
             <th>Acciones</th>
         </tr>
     </thead>
 
 
     <tbody>
-        @foreach( $empleados as $empleado )
+        @foreach( $clientes as $cliente )
         <tr>
-            <td>{{ $empleado->id }}</td>
+            <td>{{ $cliente->id }}</td>
+
+
 
             <td>
-            <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$empleado->Foto }}" width="100" alt="">
+            <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$cliente->Foto }}" width="100" alt="">
             </td>
 
 
-         
+            <td>{{ $cliente->Nombre }}</td>
+            <td>{{ $cliente->ApellidoPaterno }}</td>
+            <td>{{ $cliente->ApellidoMaterno }}</td>
+            <td>{{ $cliente->Correo }}</td>
+            <td>{{ $cliente->Direccion }}</td>
+            <td>{{ $cliente->CodigoPostal }}</td>
 
-            <td>{{ $empleado->Nombre }}</td>
-            <td>{{ $empleado->ApellidoPaterno }}</td>
-            <td>{{ $empleado->ApellidoMaterno }}</td>
-            <td>{{ $empleado->Correo }}</td>
             <td>
-            <a href="{{url('/empleado/'.$empleado->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{url('/cliente/'.$cliente->id.'/edit') }}" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="{{ url('/empleado/'.$empleado->id) }}" class="d-inline" method="post">
+            <form action="{{ url('/cliente/'.$cliente->id) }}" class="d-inline" method="post">
             @csrf 
             {{method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
@@ -70,7 +75,7 @@
     </tbody>
 </table>
 
-{!! $empleados->links()!!}
+{!! $clientes->links()!!}
 
 </div>
 @endsection

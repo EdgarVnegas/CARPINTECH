@@ -16,7 +16,7 @@
 
 
 
-<a href="{{ url('empleado/create') }}" class="btn btn-success"> Registrar nuevo empleado</a>
+<a href="{{ url('venta/create') }}" class="btn btn-success"> Registrar nueva venta</a>
 <br>
 <br>
 
@@ -24,39 +24,35 @@
     <thead class="thead-light">
         <tr>
             <th>#</th>
-            <th>Foto</th>
-            <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
-            <th>Correo</th>
-            <th>Acciones</th>
+            <th>Codigo de venta</th>
+            <th>Productos vendidos</th>
+            <th>Total de la venta</th>
+            <th>Fecha de la venta</th>
+
         </tr>
     </thead>
 
 
     <tbody>
-        @foreach( $empleados as $empleado )
+        @foreach( $ventas as $venta )
         <tr>
-            <td>{{ $empleado->id }}</td>
+            <td>{{ $venta->id }}</td>
+
+
+
+            <td>{{ $venta->CodigoVenta }}</td>
+            <td>{{ $venta->ProductosVendidos }}</td>
+            <td>{{ $venta->TotalVenta }}</td>
+            <td>{{ $venta->Fecha }}</td>
+
 
             <td>
-            <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$empleado->Foto }}" width="100" alt="">
-            </td>
-
-
-         
-
-            <td>{{ $empleado->Nombre }}</td>
-            <td>{{ $empleado->ApellidoPaterno }}</td>
-            <td>{{ $empleado->ApellidoMaterno }}</td>
-            <td>{{ $empleado->Correo }}</td>
-            <td>
-            <a href="{{url('/empleado/'.$empleado->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{url('/venta/'.$venta->id.'/edit') }}" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="{{ url('/empleado/'.$empleado->id) }}" class="d-inline" method="post">
+            <form action="{{ url('/venta/'.$venta->id) }}" class="d-inline" method="post">
             @csrf 
             {{method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
@@ -70,7 +66,7 @@
     </tbody>
 </table>
 
-{!! $empleados->links()!!}
+{!! $ventas->links()!!}
 
 </div>
 @endsection

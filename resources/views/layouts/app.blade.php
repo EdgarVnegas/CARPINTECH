@@ -34,6 +34,50 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
+                     <!-- Referencias del menu -->
+                      <!-- Referencias del menu -->
+                       <!-- Referencias del menu -->
+
+                       <img src="http://localhost/carpintech/resources/views/carpintechlogo.jpg" style="width: 100px; height: 100px; border: 2px solid black">
+
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('empleado.index') }}">{{ __('Empleado') }}</a>
+
+                    </li>
+
+
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('cliente.index') }}">{{ __('Cliente') }}</a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('cita.index') }}">{{ __('Cita') }}</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('producto.index') }}">{{ __('Producto') }}</a>
+
+                    </li>
+
+                    
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('venta.index') }}">{{ __('Venta') }}</a>
+
+                    </li>
+
+
+
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

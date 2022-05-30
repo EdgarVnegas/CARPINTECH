@@ -16,7 +16,7 @@
 
 
 
-<a href="{{ url('empleado/create') }}" class="btn btn-success"> Registrar nuevo empleado</a>
+<a href="{{ url('producto/create') }}" class="btn btn-success"> Registrar nuevo producto</a>
 <br>
 <br>
 
@@ -26,37 +26,40 @@
             <th>#</th>
             <th>Foto</th>
             <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
-            <th>Correo</th>
-            <th>Acciones</th>
+            <th>Clave del producto</th>
+            <th>Peso del producto</th>
+            <th>Alto del producto</th>
+            <th>Ancho del producto</th>
+            <th>Precio del producto</th>
         </tr>
     </thead>
 
 
     <tbody>
-        @foreach( $empleados as $empleado )
+        @foreach( $productos as $producto )
         <tr>
-            <td>{{ $empleado->id }}</td>
+            <td>{{ $producto->id }}</td>
+
+
 
             <td>
-            <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$empleado->Foto }}" width="100" alt="">
+            <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$producto->Foto }}" width="100" alt="">
             </td>
 
 
-         
-
-            <td>{{ $empleado->Nombre }}</td>
-            <td>{{ $empleado->ApellidoPaterno }}</td>
-            <td>{{ $empleado->ApellidoMaterno }}</td>
-            <td>{{ $empleado->Correo }}</td>
+            <td>{{ $producto->Nombre }}</td>
+            <td>{{ $producto->ClaveProducto }}</td>
+            <td>{{ $producto->Peso }}</td>
+            <td>{{ $producto->Alto }}</td>
+            <td>{{ $producto->Ancho }}</td>
+            <td>{{ $producto->Precio }}</td>
             <td>
-            <a href="{{url('/empleado/'.$empleado->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{url('/producto/'.$producto->id.'/edit') }}" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="{{ url('/empleado/'.$empleado->id) }}" class="d-inline" method="post">
+            <form action="{{ url('/producto/'.$producto->id) }}" class="d-inline" method="post">
             @csrf 
             {{method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
@@ -70,7 +73,8 @@
     </tbody>
 </table>
 
-{!! $empleados->links()!!}
+{!! $productos->links()!!}
 
 </div>
 @endsection
+
