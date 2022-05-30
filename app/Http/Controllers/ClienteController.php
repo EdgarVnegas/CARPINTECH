@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empleado;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 
-class EmpleadoController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class EmpleadoController extends Controller
     public function index()
     {
         //
-        $datos['empleados']=Empleado::paginate(5);
-        return view('empleado.index', $datos);
-        
+        $datos['clientes']=Cliente::paginate(5);
+        return view('cliente.index', $datos);
+
     }
 
     /**
@@ -30,7 +30,7 @@ class EmpleadoController extends Controller
     public function create()
     {
         //
-        return view('empleado.create');
+        return view('cliente.create');
     }
 
     /**
@@ -38,10 +38,10 @@ class EmpleadoController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */     
-    public function store(Request $request)  
+     */
+    public function store(Request $request)
     {
-        // $datosEmpleado = request()->all();
+        // $datosCliente = request()->all();
 
         $campos=[
 
@@ -49,6 +49,8 @@ class EmpleadoController extends Controller
             'ApellidoPaterno' => 'required|string|max:100',
             'ApellidoMaterno' => 'required|string|max:100',
             'Correo' => 'required|email',
+            'Direccion' => 'required|string|max:100',
+            'CodigoPostal' => 'required|string|max:100',
             'Foto' => 'required|max:10000|mimes:jpeg,png,jpg',
 
         ];
@@ -59,33 +61,29 @@ class EmpleadoController extends Controller
 
         ];
 
-      
-
         $this->validate($request, $campos, $mensaje);
 
 
-        $datosEmpleado = request()->except('_token');
-
+        $datosCliente = request()->except('_token');
 
         if($request->hasFile('Foto')){
-            $datosEmpleado['Foto'] = $request->file('Foto')->store('uploads', 'public');
+            $datosCliente['Foto'] = $request->file('Foto')->store('uploads', 'public');
         }
 
+        Cliente::insert($datosCliente);
 
-        Empleado::insert($datosEmpleado);
+         //return response()->json($datosCliente);
 
-         //return response()->json($datosEmpleado);
-
-         return redirect('empleado')->with('mensaje', 'Empleado agregado con exito, bienvendio a la familia CARPINTECH');
+         return redirect('cliente')->with('mensaje', 'Cliente agregado con exito, bienvendio a la familia CARPINTECH');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Empleado  $empleado
+     * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function show(Empleado $empleado)
+    public function show(Cliente $cliente)
     {
         //
     }
@@ -93,24 +91,24 @@ class EmpleadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Empleado  $empleado
+     * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
-        $empleado=Empleado::findOrFail($id);
-        return view('empleado.edit', compact('empleado') );
+        $cliente=Cliente::findOrFail($id);
+        return view('cliente.edit', compact('cliente') );
 
-        $empleado=Empleado::findOrFail($id);
-        return view('empleado.edit', compact('empleado') );
+        $cliente=Cliente::findOrFail($id);
+        return view('cliente.edit', compact('cliente') );
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Empleado  $empleado
+     * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -123,6 +121,9 @@ class EmpleadoController extends Controller
             'ApellidoPaterno' => 'required|string|max:100',
             'ApellidoMaterno' => 'required|string|max:100',
             'Correo' => 'required|email',
+            'Direccion' => 'required|string|max:100',
+            'CodigoPostal' => 'required|string|max:100',
+
         
 
         ];
@@ -143,21 +144,21 @@ class EmpleadoController extends Controller
         $this->validate($request, $campos, $mensaje);
 
         //
-        $datosEmpleado = request()->except(['_token', '_method'] );
+        $datosCliente = request()->except(['_token', '_method'] );
 
         if($request->hasFile('Foto')){
-            $empleado=Empleado::findOrFail($id);
+            $cliente=Cliente::findOrFail($id);
 
-            Storage::delete('public/'.$empleado->Foto);
+            Storage::delete('public/'.$cliente->Foto);
             
-            $datosEmpleado['Foto'] = $request->file('Foto')->store('uploads', 'public');
+            $datosCliente['Foto'] = $request->file('Foto')->store('uploads', 'public');
         }
 
-        Empleado::where('id','=',$id)->update($datosEmpleado);
-        $empleado=Empleado::findOrFail($id);
-        // return view('empleado.edit', compact('empleado') );
+        Cliente::where('id','=',$id)->update($datosCliente);
+        $cliente=Cliente::findOrFail($id);
+        // return view('cliente.edit', compact('cliente') );
 
-        return redirect('empleado')->with('mensaje', 'Empleado modificado');
+        return redirect('cliente')->with('mensaje', 'Cliente modificado');
 
         
 
@@ -167,23 +168,24 @@ class EmpleadoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Empleado  $empleado
+     * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
     public function destroy( $id)
     {
         //
 
-        $empleado=Empleado::findOrFail($id);
+        $cliente=Cliente::findOrFail($id);
 
-        if(Storage::delete('public/'.$empleado->Foto)){
+        if(Storage::delete('public/'.$cliente->Foto)){
 
-            Empleado::destroy($id);
+            Cliente::destroy($id);
 
         }
 
         
         
-        return redirect('empleado')->with('mensaje', 'Empleado eliminado');
+        return redirect('cliente')->with('mensaje', 'Cliente eliminado');
     }
 }
+

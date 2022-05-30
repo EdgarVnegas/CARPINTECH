@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Storage;
 
-class Empleado extends Model
+class Cliente extends Model
 {
     use HasFactory;
 }
