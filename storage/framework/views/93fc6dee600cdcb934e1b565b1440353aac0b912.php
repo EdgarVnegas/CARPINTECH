@@ -35,6 +35,81 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
+                     <!-- Referencias del menu -->
+                      <!-- Referencias del menu -->
+                       <!-- Referencias del menu -->
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('empleado.index')); ?>"><?php echo e(__('Empleado')); ?></a>
+
+                    </li>
+
+
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('cliente.index')); ?>"><?php echo e(__('Cliente')); ?></a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('cita.index')); ?>"><?php echo e(__('Cita')); ?></a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('producto.index')); ?>"><?php echo e(__('Producto')); ?></a>
+
+                    </li>
+
+
+                    
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('bodega.index')); ?>"><?php echo e(__('Bodega')); ?></a>
+
+                    </li>
+
+
+                    
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('herramienta.index')); ?>"><?php echo e(__('Herramienta')); ?></a>
+
+                    </li>
+
+
+                    
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('material.index')); ?>"><?php echo e(__('Material')); ?></a>
+
+                    </li>
+
+
+                    
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('proveedor.index')); ?>"><?php echo e(__('Proveedor')); ?></a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('transporte.index')); ?>"><?php echo e(__('Transporte')); ?></a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="<?php echo e(route('venta.index')); ?>"><?php echo e(__('Venta')); ?></a>
+
+                    </li>
+
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

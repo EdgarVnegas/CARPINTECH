@@ -1,25 +1,65 @@
-<label for="Nombre"> Nombre </label>
-<input type="text" name="Nombre" value="<?php echo e(isset($empleado->Nombre)?$empleado->Nombre:''); ?>" id="Nombre">
-<br>
 
-<label for="ApellidoPaterno"> Apellido Paterno </label>
-<input type="text" name="ApellidoPaterno" value="<?php echo e(isset($empleado->ApellidoPaterno)?$empleado->ApellidoPaterno:''); ?>" id="ApellidoPaterno">
-<br>
-<label for="ApellidoMaterno"> Apellido Materno </label>
-<input type="text" name="ApellidoMaterno" value="<?php echo e(isset($empleado->ApellidoMaterno)?$empleado->ApellidoMaterno:''); ?>" id="ApellidoMaterno">
-<br>
-<label for="Correo"> Correo </label>
-<input type="text" name="Correo" value="<?php echo e(isset($empleado->Correo)?$empleado->Correo:''); ?>" id="Correo"> 
-<br>
-<label for="Foto"> Foto </label>
-<?php if(isset($empleado->Foto)): ?>
-<img src="<?php echo e(asset('storage').'/'.$empleado->Foto); ?>" width="100" alt="">
+<h1> <?php echo e($modo); ?> empleado </h1>
+
+
+<?php if(count($errors)>0): ?>
+
+        <div class="alert alert-primary" role="alert">
+    <ul>
+
+        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+        <li> <?php echo e($error); ?> </li>
+
+         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+    </ul>     
+        </div>
+
+
+
 <?php endif; ?>
-<input type="file" name="Foto" value="" id="Foto">
+
+
+<div class="form-group">
+
+<label for="Nombre"> Nombre </label>
+<input type="text" class="form-control" name="Nombre" value="<?php echo e(isset($empleado->Nombre)?$empleado->Nombre:old('Nombre')); ?>" id="Nombre">
 <br>
+</div>
 
-<input type="submit" value="Guardar datos">
+<div class="form-group">
+<label for="ApellidoPaterno"> Apellido Paterno </label>
+<input type="text" class="form-control" name="ApellidoPaterno" value="<?php echo e(isset($empleado->ApellidoPaterno)?$empleado->ApellidoPaterno:old('ApellidoPaterno')); ?>" id="ApellidoPaterno">
+<br>
+</div>
+
+<div class="form-group">
+<label for="ApellidoMaterno"> Apellido Materno </label>
+<input type="text" class="form-control" name="ApellidoMaterno" value="<?php echo e(isset($empleado->ApellidoMaterno)?$empleado->ApellidoMaterno:old('ApellidoMaterno')); ?>" id="ApellidoMaterno">
+<br>
+</div>
+
+<div class="form-group">
+<label for="Correo"> Correo </label>
+<input type="text" class="form-control" name="Correo" value="<?php echo e(isset($empleado->Correo)?$empleado->Correo:old('Correo')); ?>" id="Correo"> 
+<br>
+</div>
+
+<div class="form-group">
 
 
-<a href="<?php echo e(url('empleado/create')); ?>"> Regresar </a>
+<label for="Foto">  </label> 
+<?php if(isset($empleado->Foto)): ?>
+
+<img class="img-thumbnail img-fluid" src="<?php echo e(asset('storage').'/'.$empleado->Foto); ?>" width="100" alt="">
+<?php endif; ?>
+<input type="file" class="form-control" name="Foto" value="" id="Foto">
+<br>
+</div>
+
+<input class="btn btn-success" type="submit" value="<?php echo e($modo); ?> datos">
+
+
+<a class="btn btn-primary" href="<?php echo e(url('empleado/create')); ?>"> Regresar </a>
 <br><?php /**PATH C:\xampp\htdocs\CARPINTECH\resources\views/empleado/form.blade.php ENDPATH**/ ?>

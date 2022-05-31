@@ -1,6 +1,25 @@
-Mostrar lista de empleados CARPINTECH
 
-<a href="<?php echo e(url('empleado/create')); ?>"> Registrar nuevo empleado </a>
+<?php $__env->startSection('content'); ?>
+<div class="container">
+
+
+    
+    <?php if(Session::has('mensaje')): ?> 
+    <div class="alert alert-success alert-dismissible" role="alert">
+    <?php echo e(Session::get('mensaje')); ?>
+
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+
+</div>
+<?php endif; ?>
+
+
+
+<a href="<?php echo e(url('empleado/create')); ?>" class="btn btn-success"> Registrar nuevo empleado</a>
+<br>
+<br>
 
 <table class="table table-dark">
     <thead class="thead-light">
@@ -21,28 +40,28 @@ Mostrar lista de empleados CARPINTECH
         <tr>
             <td><?php echo e($empleado->id); ?></td>
 
-
-
             <td>
-            <img src="<?php echo e(asset('storage').'/'.$empleado->Foto); ?>" width="100" alt="">
+            <img class="img-thumbnail img-fluid" src="<?php echo e(asset('storage').'/'.$empleado->Foto); ?>" width="100" alt="">
             </td>
 
+
+         
 
             <td><?php echo e($empleado->Nombre); ?></td>
             <td><?php echo e($empleado->ApellidoPaterno); ?></td>
             <td><?php echo e($empleado->ApellidoMaterno); ?></td>
             <td><?php echo e($empleado->Correo); ?></td>
             <td>
-            <a href="<?php echo e(url('/empleado/'.$empleado->id.'/edit')); ?>">
+            <a href="<?php echo e(url('/empleado/'.$empleado->id.'/edit')); ?>" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="<?php echo e(url('/empleado/'.$empleado->id)); ?>" method="post">
+            <form action="<?php echo e(url('/empleado/'.$empleado->id)); ?>" class="d-inline" method="post">
             <?php echo csrf_field(); ?> 
             <?php echo e(method_field('DELETE')); ?>
 
-            <input type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
+            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
 
 
             </form>
@@ -51,4 +70,11 @@ Mostrar lista de empleados CARPINTECH
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
-</table><?php /**PATH C:\xampp\htdocs\CARPINTECH\resources\views/empleado/index.blade.php ENDPATH**/ ?>
+</table>
+
+<?php echo $empleados->links(); ?>
+
+
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\CARPINTECH\resources\views/empleado/index.blade.php ENDPATH**/ ?>
