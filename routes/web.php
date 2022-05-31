@@ -5,7 +5,15 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\BodegaController;
+use App\Http\Controllers\HerramientaController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\TransporteController;
 use App\Http\Controllers\VentaController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +40,6 @@ Route::get('/empleado/create', [EmpleadoController::class, 'create']);
 */
 
 Route::resource('empleado', EmpleadoController::class)->middleware('auth');
-
 Auth::routes(['register'=>false, 'reset'=> false]);
 
 Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
@@ -45,36 +52,36 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::resource('cliente', ClienteController::class)->middleware('auth');
 Auth::routes(['register'=>false, 'reset'=> false]);
-Route::get('/home', [ClienteController::class, 'index'])->name('home');
-Route::group(['middleware' => 'auth'], function () {
-Route::get('/', [ClienteController::class, 'index'])->name('home');
-});
-
-
-
 
 Route::resource('producto', ProductoController::class)->middleware('auth');
 Auth::routes(['register'=>false, 'reset'=> false]);
-Route::get('/home', [ProductoController::class, 'index'])->name('home');
-Route::group(['middleware' => 'auth'], function () {
-Route::get('/', [ProductoController::class, 'index'])->name('home');
-});
+
+Route::resource('bodega', BodegaController::class)->middleware('auth');
+Auth::routes(['register'=>false, 'reset'=> false]);
 
 Route::resource('cita', CitaController::class)->middleware('auth');
 Auth::routes(['register'=>false, 'reset'=> false]);
-Route::get('/home', [CitaController::class, 'index'])->name('home');
-Route::group(['middleware' => 'auth'], function () {
-Route::get('/', [CitaController::class, 'index'])->name('home');
-});
+
+Route::resource('herramienta', HerramientaController::class)->middleware('auth');
+Auth::routes(['register'=>false, 'reset'=> false]);
+
+Route::resource('material', MaterialController::class)->middleware('auth');
+Auth::routes(['register'=>false, 'reset'=> false]);
+
+Route::resource('proveedor', ProveedorController::class)->middleware('auth');
+Auth::routes(['register'=>false, 'reset'=> false]);
+
+Route::resource('transporte', TransporteController::class)->middleware('auth');
+Auth::routes(['register'=>false, 'reset'=> false]);
 
 Route::resource('venta', VentaController::class)->middleware('auth');
 Auth::routes(['register'=>false, 'reset'=> false]);
-Route::get('/home', [VentaController::class, 'index'])->name('home');
-Route::group(['middleware' => 'auth'], function () {
-Route::get('/', [VentaController::class, 'index'])->name('home');
-});
 
 
+
+/**
+ * Route::resource('venta', VentaController::class); Esto es como estaban todos antes
+ */
 
 /**  TODO ESTO ES PARA MOSTRAR LAS DEMAS COSAS
  

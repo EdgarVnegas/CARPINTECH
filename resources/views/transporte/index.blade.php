@@ -16,7 +16,7 @@
 
 
 
-<a href="{{ url('venta/create') }}" class="btn btn-success"> Registrar nueva venta</a>
+<a href="{{ url('transporte/create') }}" class="btn btn-success"> Registrar nueva transporte</a>
 <br>
 <br>
 
@@ -24,35 +24,35 @@
     <thead class="thead-light">
         <tr>
             <th>#</th>
-            <th>Codigo de la venta</th>
-            <th>Cantidad de articulos</th>
-            <th>Total de la venta</th>
-            <th>Fecha de la venta</th>
-            <th>Notas</th>
+            <th>Tipo de vehiculo</th>
+            <th>Marca de vehiculo</th>
+            <th>Placa de vehiculo</th>
+            <th>NIV de vehiculo</th>
+
         </tr>
     </thead>
 
 
     <tbody>
-        @foreach( $ventas as $venta )
+        @foreach( $transportes as $transporte )
         <tr>
-            <td>{{ $venta->id }}</td>
+            <td>{{ $transporte->id }}</td>
 
 
 
-            <td>{{ $venta->CodigoVenta }}</td>
-            <td>{{ $venta->CantidadArticulos }}</td>
-            <td>{{ $venta->Total }}</td>
-            <td>{{ $venta->Fecha }}</td>
-            <td>{{ $venta->Notas }}</td>
+            <td>{{ $transporte->Tipo }}</td>
+            <td>{{ $transporte->Marca }}</td>
+            <td>{{ $transporte->Placa }}</td>
+            <td>{{ $transporte->NIV }}</td>
+
 
             <td>
-            <a href="{{url('/venta/'.$venta->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{url('/transporte/'.$transporte->id.'/edit') }}" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="{{ url('/venta/'.$venta->id) }}" class="d-inline" method="post">
+            <form action="{{ url('/transporte/'.$transporte->id) }}" class="d-inline" method="post">
             @csrf 
             {{method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
@@ -66,7 +66,7 @@
     </tbody>
 </table>
 
-{!! $ventas->links()!!}
+{!! $transportes->links()!!}
 
 </div>
 @endsection

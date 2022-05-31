@@ -22,34 +22,39 @@
 
 <div class="form-group">
 
-<label for="CodigoVenta"> Codigo de la venta</label>
+<label for="CodigoVenta"> Codigo de venta</label>
 <input type="text" class="form-control" name="CodigoVenta" value="{{ isset($venta->CodigoVenta)?$venta->CodigoVenta:old('CodigoVenta') }}" id="CodigoVenta">
 <br>
 </div>
 
 <div class="form-group">
-<label for="ProductosVendidos"> Productos vendidos </label>
-<input type="text" class="form-control" name="ProductosVendidos" value="{{ isset($venta->ProductosVendidos)?$venta->ProductosVendidos:old('ProductosVendidos') }}" id="ProductosVendidos">
+<label for="CantidadArticulos"> Cantidad de articulos </label>
+<input type="text" class="form-control" name="CantidadArticulos" value="{{ isset($venta->CantidadArticulos)?$venta->CantidadArticulos:old('CantidadArticulos') }}" id="CantidadArticulos">
 <br>
 </div>
 
 <div class="form-group">
-<label for="TotalVenta"> Total </label>
-<input type="text" class="form-control" name="TotalVenta" value="{{ isset($venta->TotalVenta)?$venta->TotalVenta:old('TotalVenta') }}" id="TotalVenta">
+<label for="Total">Total de la venta </label>
+<input type="text" class="form-control" name="Total" value="{{ isset($venta->Total)?$venta->Total:old('Total') }}" id="Total">
 <br>
 </div>
 
 <div class="form-group">
-<label for="Fecha"> Fecha </label>
+<label for="Fecha"> Fecha de la venta </label>
 <input type="text" class="form-control" name="Fecha" value="{{ isset($venta->Fecha)?$venta->Fecha:old('Fecha') }}" id="Fecha">
 <br>
 </div>
 
+<div class="form-group">
+<label for="Notas"> Notas de la venta </label>
+<input type="text" class="form-control" name="Notas" value="{{ isset($venta->Notas)?$venta->Notas:old('Notas') }}" id="Notas">
+<br>
+</div>
 
 
 
 <input class="btn btn-success" type="submit" value="{{ $modo }} datos">
 
 
-<a class="btn btn-primary" href="{{ url('Venta/create') }}"> Regresar </a>
+<a class="btn btn-primary" href="{{ url('venta/create') }}"> Regresar </a>
 <br>

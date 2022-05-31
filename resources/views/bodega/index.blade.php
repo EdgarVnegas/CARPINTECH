@@ -16,7 +16,7 @@
 
 
 
-<a href="{{ url('venta/create') }}" class="btn btn-success"> Registrar nueva venta</a>
+<a href="{{ url('bodega/create') }}" class="btn btn-success"> Registrar nueva bodega</a>
 <br>
 <br>
 
@@ -24,35 +24,34 @@
     <thead class="thead-light">
         <tr>
             <th>#</th>
-            <th>Codigo de la venta</th>
-            <th>Cantidad de articulos</th>
-            <th>Total de la venta</th>
-            <th>Fecha de la venta</th>
-            <th>Notas</th>
+            <th>Calle de la bodega</th>
+            <th>Colonia de la bodega</th>
+            <th>CP de la bodega</th>
+            <th>Reponsable de la bodega</th>
         </tr>
     </thead>
 
 
     <tbody>
-        @foreach( $ventas as $venta )
+        @foreach( $bodegas as $bodega )
         <tr>
-            <td>{{ $venta->id }}</td>
+            <td>{{ $bodega->id }}</td>
 
 
 
-            <td>{{ $venta->CodigoVenta }}</td>
-            <td>{{ $venta->CantidadArticulos }}</td>
-            <td>{{ $venta->Total }}</td>
-            <td>{{ $venta->Fecha }}</td>
-            <td>{{ $venta->Notas }}</td>
+            <td>{{ $bodega->Calle }}</td>
+            <td>{{ $bodega->Colonia }}</td>
+            <td>{{ $bodega->CP }}</td>
+            <td>{{ $bodega->Responsable }}</td>
+            
 
             <td>
-            <a href="{{url('/venta/'.$venta->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{url('/bodega/'.$bodega->id.'/edit') }}" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="{{ url('/venta/'.$venta->id) }}" class="d-inline" method="post">
+            <form action="{{ url('/bodega/'.$bodega->id) }}" class="d-inline" method="post">
             @csrf 
             {{method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
@@ -66,7 +65,7 @@
     </tbody>
 </table>
 
-{!! $ventas->links()!!}
+{!! $bodegas->links()!!}
 
 </div>
 @endsection

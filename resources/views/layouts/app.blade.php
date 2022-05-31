@@ -37,10 +37,6 @@
                      <!-- Referencias del menu -->
                       <!-- Referencias del menu -->
                        <!-- Referencias del menu -->
-
-                       <img src="http://localhost/carpintech/resources/views/carpintechlogo.jpg" style="width: 100px; height: 100px; border: 2px solid black">
-
-
                     <li class="nav-item">
 
                     <a class="nav-link" href="{{ route('empleado.index') }}">{{ __('Empleado') }}</a>
@@ -68,14 +64,49 @@
 
                     </li>
 
+
                     
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('bodega.index') }}">{{ __('Bodega') }}</a>
+
+                    </li>
+
+
+                    
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('herramienta.index') }}">{{ __('Herramienta') }}</a>
+
+                    </li>
+
+
+                    
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('material.index') }}">{{ __('Material') }}</a>
+
+                    </li>
+
+
+                    
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('proveedor.index') }}">{{ __('Proveedor') }}</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                    <a class="nav-link" href="{{ route('transporte.index') }}">{{ __('Transporte') }}</a>
+
+                    </li>
+
                     <li class="nav-item">
 
                     <a class="nav-link" href="{{ route('venta.index') }}">{{ __('Venta') }}</a>
 
                     </li>
-
-
 
 
                     </ul>

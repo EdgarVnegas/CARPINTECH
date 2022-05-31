@@ -16,7 +16,7 @@
 
 
 
-<a href="{{ url('venta/create') }}" class="btn btn-success"> Registrar nueva venta</a>
+<a href="{{ url('material/create') }}" class="btn btn-success"> Registrar nueva material</a>
 <br>
 <br>
 
@@ -24,35 +24,33 @@
     <thead class="thead-light">
         <tr>
             <th>#</th>
-            <th>Codigo de la venta</th>
-            <th>Cantidad de articulos</th>
-            <th>Total de la venta</th>
-            <th>Fecha de la venta</th>
-            <th>Notas</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Codigo</th>
+
         </tr>
     </thead>
 
 
     <tbody>
-        @foreach( $ventas as $venta )
+        @foreach( $materials as $material )
         <tr>
-            <td>{{ $venta->id }}</td>
+            <td>{{ $material->id }}</td>
 
 
 
-            <td>{{ $venta->CodigoVenta }}</td>
-            <td>{{ $venta->CantidadArticulos }}</td>
-            <td>{{ $venta->Total }}</td>
-            <td>{{ $venta->Fecha }}</td>
-            <td>{{ $venta->Notas }}</td>
+            <td>{{ $material->Nombre }}</td>
+            <td>{{ $material->Tipo }}</td>
+            <td>{{ $material->Codigo }}</td>
+
 
             <td>
-            <a href="{{url('/venta/'.$venta->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{url('/material/'.$material->id.'/edit') }}" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="{{ url('/venta/'.$venta->id) }}" class="d-inline" method="post">
+            <form action="{{ url('/material/'.$material->id) }}" class="d-inline" method="post">
             @csrf 
             {{method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
@@ -66,7 +64,7 @@
     </tbody>
 </table>
 
-{!! $ventas->links()!!}
+{!! $materials->links()!!}
 
 </div>
 @endsection

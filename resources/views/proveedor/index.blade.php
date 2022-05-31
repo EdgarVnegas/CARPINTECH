@@ -16,7 +16,7 @@
 
 
 
-<a href="{{ url('venta/create') }}" class="btn btn-success"> Registrar nueva venta</a>
+<a href="{{ url('proveedor/create') }}" class="btn btn-success"> Registrar nueva proveedor</a>
 <br>
 <br>
 
@@ -24,35 +24,37 @@
     <thead class="thead-light">
         <tr>
             <th>#</th>
-            <th>Codigo de la venta</th>
-            <th>Cantidad de articulos</th>
-            <th>Total de la venta</th>
-            <th>Fecha de la venta</th>
-            <th>Notas</th>
+            <th>Nombre </th>
+            <th>Calle</th>
+            <th>Colonia</th>
+            <th>CP</th>
+            <th>Responsable</th>
+            <th>Telefono</th>
         </tr>
     </thead>
 
 
     <tbody>
-        @foreach( $ventas as $venta )
+        @foreach( $proveedors as $proveedor )
         <tr>
-            <td>{{ $venta->id }}</td>
+            <td>{{ $proveedor->id }}</td>
 
 
 
-            <td>{{ $venta->CodigoVenta }}</td>
-            <td>{{ $venta->CantidadArticulos }}</td>
-            <td>{{ $venta->Total }}</td>
-            <td>{{ $venta->Fecha }}</td>
-            <td>{{ $venta->Notas }}</td>
+            <td>{{ $proveedor->Nombre }}</td>
+            <td>{{ $proveedor->Calle }}</td>
+            <td>{{ $proveedor->Colonia }}</td>
+            <td>{{ $proveedor->CP }}</td>
+            <td>{{ $proveedor->Responsable }}</td>
+            <td>{{ $proveedor->Telefono }}</td>
 
             <td>
-            <a href="{{url('/venta/'.$venta->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{url('/proveedor/'.$proveedor->id.'/edit') }}" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="{{ url('/venta/'.$venta->id) }}" class="d-inline" method="post">
+            <form action="{{ url('/proveedor/'.$proveedor->id) }}" class="d-inline" method="post">
             @csrf 
             {{method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
@@ -66,7 +68,7 @@
     </tbody>
 </table>
 
-{!! $ventas->links()!!}
+{!! $proveedors->links()!!}
 
 </div>
 @endsection

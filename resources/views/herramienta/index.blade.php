@@ -16,7 +16,7 @@
 
 
 
-<a href="{{ url('venta/create') }}" class="btn btn-success"> Registrar nueva venta</a>
+<a href="{{ url('herramienta/create') }}" class="btn btn-success"> Registrar nueva herramienta</a>
 <br>
 <br>
 
@@ -24,35 +24,34 @@
     <thead class="thead-light">
         <tr>
             <th>#</th>
-            <th>Codigo de la venta</th>
-            <th>Cantidad de articulos</th>
-            <th>Total de la venta</th>
-            <th>Fecha de la venta</th>
-            <th>Notas</th>
+            <th>Nombre de la herramienta</th>
+            <th>Tipo de herramienta</th>
+            <th>Codigo de la herramienta</th>
+            <th>Marca de la herramienta</th>
         </tr>
     </thead>
 
 
     <tbody>
-        @foreach( $ventas as $venta )
+        @foreach( $herramientas as $herramienta )
         <tr>
-            <td>{{ $venta->id }}</td>
+            <td>{{ $herramienta->id }}</td>
 
 
 
-            <td>{{ $venta->CodigoVenta }}</td>
-            <td>{{ $venta->CantidadArticulos }}</td>
-            <td>{{ $venta->Total }}</td>
-            <td>{{ $venta->Fecha }}</td>
-            <td>{{ $venta->Notas }}</td>
+            <td>{{ $herramienta->Nombre }}</td>
+            <td>{{ $herramienta->Tipo }}</td>
+            <td>{{ $herramienta->Codigo }}</td>
+            <td>{{ $herramienta->Marca }}</td>
+
 
             <td>
-            <a href="{{url('/venta/'.$venta->id.'/edit') }}" class="btn btn-warning">
+            <a href="{{url('/herramienta/'.$herramienta->id.'/edit') }}" class="btn btn-warning">
                     Editar 
             </a>    
             | 
             
-            <form action="{{ url('/venta/'.$venta->id) }}" class="d-inline" method="post">
+            <form action="{{ url('/herramienta/'.$herramienta->id) }}" class="d-inline" method="post">
             @csrf 
             {{method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
@@ -66,7 +65,7 @@
     </tbody>
 </table>
 
-{!! $ventas->links()!!}
+{!! $herramientas->links()!!}
 
 </div>
 @endsection
