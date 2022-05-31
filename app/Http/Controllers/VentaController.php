@@ -19,6 +19,7 @@ class VentaController extends Controller
         //
         $datos['ventas']=Venta::paginate(5);
         return view('venta.index', $datos);
+
     }
 
     /**
@@ -43,16 +44,16 @@ class VentaController extends Controller
         $campos=[
 
             'CodigoVenta' => 'required|string|max:100',
-            'ProductosVendidos' => 'required|string|max:100',
-            'TotalVenta' => 'required|string|max:100',
-            'Fecha' => 'required|string|max:100',
-
+            'CantidadArticulos' => 'required|string|max:100',
+            'Total' => 'required|string|max:100',
+            'Fecha' => 'required|date',
+            'Notas' => 'required|string|max:100',
 
         ];
         $mensaje=[
 
             'required' => 'El :attribute es requerido',
-            'CodigoVenta.required'=> 'El codigo de venta es requerido'
+            'Total.required'=> 'El total es requerido'
 
         ];
 
@@ -90,6 +91,9 @@ class VentaController extends Controller
      * @param  \App\Models\Venta  $venta
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function edit($id)
     {
         //
@@ -109,13 +113,14 @@ class VentaController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $campos=[
 
             'CodigoVenta' => 'required|string|max:100',
-            'ProductosVendidos' => 'required|string|max:100',
-            'TotalVenta' => 'required|string|max:100',
-            'Fecha' => 'required|string|max:100',
-
+            'CantidadArticulos' => 'required|string|max:100',
+            'Fecha' => 'required|date',
+            'Notas' => 'required|string|max:100',
         
 
         ];
@@ -143,6 +148,7 @@ class VentaController extends Controller
 
         
 
+
     }
 
     /**
@@ -151,7 +157,7 @@ class VentaController extends Controller
      * @param  \App\Models\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
         //
 
@@ -162,4 +168,3 @@ class VentaController extends Controller
         return redirect('venta')->with('mensaje', 'Venta eliminada');
     }
 }
-
